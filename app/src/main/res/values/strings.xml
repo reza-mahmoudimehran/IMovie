@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">I Movie</string>
+    <string name="sample_rating">9.5</string>
+    <string name="sample_search_text">Batman</string>
 </resources>
