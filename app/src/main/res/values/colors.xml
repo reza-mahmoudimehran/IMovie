@@ -15,6 +15,7 @@
     <color name="transparent">#0000</color>
 
     <color name="gray_100">#EDEDED</color>
+    <color name="gray_200">#CFCFCF</color>
     <color name="gray_700">#343A47</color>
     <color name="gray_800">#262A34</color>
     <color name="gray_900">#1B1E25</color>

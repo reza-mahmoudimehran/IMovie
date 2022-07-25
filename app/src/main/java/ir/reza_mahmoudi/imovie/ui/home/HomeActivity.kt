@@ -29,7 +29,10 @@ class HomeActivity : AppCompatActivity() {
         viewModel.searchMovies("Batman")
 
         moviesAdapter=MoviesListAdapter(arrayListOf()){
-            startActivity(Intent(this@HomeActivity, MovieDetailsActivity::class.java))
+            startActivity(
+                Intent(this@HomeActivity,MovieDetailsActivity::class.java)
+                    .putExtra("imdbID",it)
+            )
         }
         binding.moviesList.apply {
             layoutManager= LinearLayoutManager(context,

@@ -10,7 +10,7 @@ import ir.reza_mahmoudi.imovie.utils.getProgressDrawable
 import ir.reza_mahmoudi.imovie.utils.loadImage
 
 class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
-                         private val onMovieClicked: (id: Long) -> Unit) : RecyclerView.Adapter<MoviesListAdapter.ViewHolder>(){
+                         private val onMovieClicked: (imdbId: String) -> Unit) : RecyclerView.Adapter<MoviesListAdapter.ViewHolder>(){
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateMovies(newMovies:List<MovieItem>){
@@ -21,21 +21,21 @@ class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val holder = ViewHolder(binding)
-        binding.movieItemMainLayout.setOnClickListener {
-            onMovieClicked(holder.itemId)
-        }
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(movies[position])
+        holder.movieItemMainLayout.setOnClickListener {
+            movies[position].imdbID?.let { imdbID -> onMovieClicked(imdbID) }
+        }
     }
 
     override fun getItemCount(): Int =movies.size
 
     class ViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root){
         private val progressDrawable= getProgressDrawable(binding.root.context)
+        val movieItemMainLayout =binding.movieItemMainLayout
         fun bind(movie: MovieItem){
             binding.title.text=movie.title
             binding.type.text=movie.type

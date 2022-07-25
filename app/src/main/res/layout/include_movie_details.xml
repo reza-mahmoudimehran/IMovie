@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/details"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/movie_details_image_height">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/movie_details_shadow_height"
+        android:layout_gravity="bottom"
+        android:background="@drawable/back_movie_details_shadow"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/MovieItemShape"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/MovieItemShape"/>
+    </LinearLayout>
+</FrameLayout>
+<androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_medium"
+    style="@style/Title"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        style="@style/SubTitle"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash"
+        android:layout_margin="@dimen/spacing_medium"
+        style="@style/SubTitle"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        style="@style/SubTitle"/>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/spacing_middle"
+        android:background="@drawable/back_movie_items">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/imdbRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/SubTitle"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/imdb"
+            android:gravity="center"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/SubTitle"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/spacing_middle"
+        android:background="@drawable/back_movie_items">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/metaRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/SubTitle"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/metacritic"
+            android:gravity="center"
+            android:layout_margin="@dimen/spacing_medium"
+            style="@style/SubTitle"/>
+    </LinearLayout>
+</LinearLayout>
+<androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/summary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:layout_margin="@dimen/spacing_medium"
+    style="@style/SubTitle"/>
+</LinearLayout>

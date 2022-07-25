@@ -18,4 +18,6 @@ data class MovieDetails(
     @SerializedName("Metascore")
     val metaScore: String?,
     @SerializedName("imdbRating")
-    val imdbRating: String?)
+    val imdbRating: String?,
+    @SerializedName("Poster")
+    val poster: String?)

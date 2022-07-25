@@ -6,6 +6,9 @@
     <dimen name="splash_lottie_width">100dp</dimen>
     <dimen name="movie_item_height">172dp</dimen>
     <dimen name="movie_image_width">92dp</dimen>
+    <dimen name="movie_details_image_height">256dp</dimen>
+    <dimen name="movie_details_shadow_height">92dp</dimen>
+    <dimen name="movie_details_rating_width">128dp</dimen>
 
     <!--general spacing-->
     <dimen name="spacing_xsmall">2dp</dimen>
