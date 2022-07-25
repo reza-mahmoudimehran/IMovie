@@ -9,7 +9,8 @@ import ir.reza_mahmoudi.imovie.databinding.ItemMovieBinding
 import ir.reza_mahmoudi.imovie.utils.getProgressDrawable
 import ir.reza_mahmoudi.imovie.utils.loadImage
 
-class MoviesListAdapter (private var movies: ArrayList<MovieItem>) : RecyclerView.Adapter<MoviesListAdapter.ViewHolder>(){
+class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
+                         private val onMovieClicked: (id: Long) -> Unit) : RecyclerView.Adapter<MoviesListAdapter.ViewHolder>(){
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateMovies(newMovies:List<MovieItem>){
@@ -20,6 +21,10 @@ class MoviesListAdapter (private var movies: ArrayList<MovieItem>) : RecyclerVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val holder = ViewHolder(binding)
+        binding.movieItemMainLayout.setOnClickListener {
+            onMovieClicked(holder.itemId)
+        }
         return ViewHolder(binding)
     }
 

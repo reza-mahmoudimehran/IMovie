@@ -1,19 +1,19 @@
 package ir.reza_mahmoudi.imovie.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import ir.reza_mahmoudi.imovie.R
 import ir.reza_mahmoudi.imovie.data.model.MovieItem
-import ir.reza_mahmoudi.imovie.data.model.SearchResponse
 import ir.reza_mahmoudi.imovie.databinding.ActivityHomeBinding
+import ir.reza_mahmoudi.imovie.ui.moviedetails.MovieDetailsActivity
 
 class HomeActivity : AppCompatActivity() {
     lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
-    private val moviesAdapter=MoviesListAdapter(arrayListOf())
+    private lateinit var moviesAdapter:MoviesListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +28,9 @@ class HomeActivity : AppCompatActivity() {
         viewModel= ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.searchMovies("Batman")
 
+        moviesAdapter=MoviesListAdapter(arrayListOf()){
+            startActivity(Intent(this@HomeActivity, MovieDetailsActivity::class.java))
+        }
         binding.moviesList.apply {
             layoutManager= LinearLayoutManager(context,
                 LinearLayoutManager.VERTICAL, false)
