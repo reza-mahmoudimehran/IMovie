@@ -7,8 +7,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieApi {
-    @GET()
-    fun getFixtures(
+    @GET("/")
+    fun getMovies(
         @Query("s") searchText:String,
         @Query("apiKey")
         apiKey: String = API_KEY): Single<SearchResponse>
