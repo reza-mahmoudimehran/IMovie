@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/movie_item_height"
     android:layout_margin="@dimen/spacing_medium"
-    android:elevation="@dimen/spacing_middle"
+    app:cardElevation="@dimen/spacing_middle"
+    app:cardBackgroundColor="@color/black_700"
     app:cardCornerRadius="@dimen/spacing_xmedium">
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,10 +15,10 @@
             android:layout_width="@dimen/movie_image_width"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/spacing_large"
-            android:elevation="@dimen/spacing_middle"
+            app:cardElevation="@dimen/spacing_middle"
             app:cardCornerRadius="@dimen/spacing_xmedium">
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgCoverPostItem"
+                android:id="@+id/coverImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
@@ -28,16 +29,19 @@
             android:orientation="vertical"
             android:layout_margin="@dimen/spacing_large">
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 style="@style/Title"/>
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 style="@style/SubTitle"/>
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
