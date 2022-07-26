@@ -75,6 +75,7 @@ class HomeViewModel (application: Application
                     }
                     override fun onError(e: Throwable) {
                         showLog("getLocalList: ",e.toString())
+                        movies.value=listOf()
                         setCompleteWithError()
                     }
                 })

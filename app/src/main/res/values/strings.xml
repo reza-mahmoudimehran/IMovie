@@ -2,7 +2,7 @@
     <string name="app_name">I Movie</string>
     <string name="sample_rating">9.5</string>
     <string name="sample_search_text">Batman</string>
-    <string name="error_text">Oops Something Went Wrong While Loading Data, Please Try Again</string>
+    <string name="error_text">Oops Something Went Wrong While Loading Data</string>
     <string name="slash">/</string>
     <string name="metacritic">Metacritic</string>
     <string name="imdb">IMDB</string>
