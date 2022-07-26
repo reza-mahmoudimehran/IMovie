@@ -27,7 +27,7 @@ class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(movies[position])
         holder.movieItemMainLayout.setOnClickListener {
-            movies[position].imdbID?.let { imdbID -> onMovieClicked(imdbID) }
+            onMovieClicked(movies[position].imdbID)
         }
     }
 

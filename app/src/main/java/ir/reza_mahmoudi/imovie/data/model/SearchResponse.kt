@@ -1,11 +1,17 @@
 package ir.reza_mahmoudi.imovie.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(
+    tableName = "search_response"
+)
 data class SearchResponse(
-
     @SerializedName("Search")
-    val search: MutableList<MovieItem>,
+    val searchList: List<MovieItem>?,
+    @PrimaryKey()
+    var searchText: String,
     @SerializedName("Response")
     val status: String,
     @SerializedName("totalResults")

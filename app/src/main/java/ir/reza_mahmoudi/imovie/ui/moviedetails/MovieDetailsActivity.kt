@@ -7,13 +7,16 @@ import androidx.lifecycle.ViewModelProvider
 import ir.reza_mahmoudi.imovie.data.model.MovieDetails
 import ir.reza_mahmoudi.imovie.databinding.ActivityMovieDetailsBinding
 import ir.reza_mahmoudi.imovie.databinding.IncludeMovieDetailsBinding
+import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData
 import ir.reza_mahmoudi.imovie.utils.getProgressDrawable
+import ir.reza_mahmoudi.imovie.utils.isConnected
 import ir.reza_mahmoudi.imovie.utils.loadImage
 
 class MovieDetailsActivity : AppCompatActivity() {
     lateinit var viewModel: MovieDetailsViewModel
     private lateinit var binding: ActivityMovieDetailsBinding
     private lateinit var detailsBinding: IncludeMovieDetailsBinding
+    private lateinit var connectionLiveData: ConnectionLiveData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,11 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         viewModel= ViewModelProvider(this)[MovieDetailsViewModel::class.java]
 
+        connectionLiveData = ConnectionLiveData(this)
+        connectionLiveData.observe(this) {
+            viewModel.isNetworkAvailable.value = it
+        }
+        viewModel.isNetworkAvailable.value = isConnected()
 
         val imdbID =intent.getStringExtra("imdbID")
         imdbID?.let { viewModel.getDetails(it) }
@@ -47,6 +55,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel.moviesLoadError.observe(this) { isError: Boolean? ->
             isError?.let {
                 binding.errorMessage.visibility = if (it) View.VISIBLE else View.GONE
+                detailsBinding.details.visibility = if (it) View.GONE else View.VISIBLE
             }
         }
         viewModel.loading.observe(this) { isLoading: Boolean? ->

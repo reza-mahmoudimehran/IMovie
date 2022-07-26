@@ -1,8 +1,16 @@
 package ir.reza_mahmoudi.imovie.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(
+    tableName = "movie_details"
+)
 data class MovieDetails(
+    @PrimaryKey()
+    @SerializedName("imdbID")
+    val imdbID: String ="",
     @SerializedName("Title")
     val title: String?,
     @SerializedName("Director")

@@ -9,25 +9,36 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ir.reza_mahmoudi.imovie.data.model.MovieItem
 import ir.reza_mahmoudi.imovie.databinding.ActivityHomeBinding
 import ir.reza_mahmoudi.imovie.ui.moviedetails.MovieDetailsActivity
+import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData
+import ir.reza_mahmoudi.imovie.utils.isConnected
 
 class HomeActivity : AppCompatActivity() {
     lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
     private lateinit var moviesAdapter:MoviesListAdapter
-
+    private lateinit var connectionLiveData: ConnectionLiveData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initViewModel()
         initViews()
         playLoadingAnimation()
         observeViewModel()
     }
-    private fun initViews(){
+    private fun initViewModel(){
         viewModel= ViewModelProvider(this)[HomeViewModel::class.java]
-        viewModel.searchMovies("Batman")
 
+        connectionLiveData = ConnectionLiveData(this)
+        connectionLiveData.observe(this) {
+            viewModel.isNetworkAvailable.value = it
+        }
+        viewModel.isNetworkAvailable.value = isConnected()
+
+        viewModel.searchMovies("Batman")
+    }
+    private fun initViews(){
         moviesAdapter=MoviesListAdapter(arrayListOf()){
             startActivity(
                 Intent(this@HomeActivity,MovieDetailsActivity::class.java)
