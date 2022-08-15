@@ -8,6 +8,8 @@ import androidx.room.TypeConverters
 import ir.reza_mahmoudi.imovie.model.MovieDetails
 import ir.reza_mahmoudi.imovie.model.MovieItem
 import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.utils.Constants.Companion.DATABASE_NAME
+
 @Database(
     entities = [MovieItem::class, MovieDetails::class,SearchResponse::class],
     version = 1 ,
@@ -24,8 +26,6 @@ abstract class MoviesDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: MoviesDatabase? = null
 
-        private const val DB_NAME = "event_database.db"
-
         fun getDatabase(context: Context): MoviesDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
@@ -35,7 +35,7 @@ abstract class MoviesDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MoviesDatabase::class.java,
-                    DB_NAME
+                    DATABASE_NAME
                 ).build()
                 INSTANCE = instance
                 // return instance

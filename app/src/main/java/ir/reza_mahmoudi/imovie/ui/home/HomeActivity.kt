@@ -11,9 +11,8 @@ import ir.reza_mahmoudi.imovie.databinding.ActivityHomeBinding
 import ir.reza_mahmoudi.imovie.ui.moviedetails.MovieDetailsActivity
 import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData
 import ir.reza_mahmoudi.imovie.utils.isConnected
-import javax.inject.Inject
 
-class HomeActivity @Inject constructor(private  val repo:HomeViewModel) : AppCompatActivity() {
+class HomeActivity: AppCompatActivity() {
     lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
     private lateinit var moviesAdapter:MoviesListAdapter

@@ -1,22 +1,28 @@
 package ir.reza_mahmoudi.imovie.data.repository.home
 
 import io.reactivex.Single
+import ir.reza_mahmoudi.imovie.data.local.MoviesDao
+import ir.reza_mahmoudi.imovie.data.remote.MovieApi
 import ir.reza_mahmoudi.imovie.model.SearchResponse
+import javax.inject.Inject
 
-class HomeRepositoryImpl : HomeRepository{
+class HomeRepositoryImpl @Inject constructor(
+    private val localDataSource: MoviesDao,
+    private val remoteDataSource: MovieApi
+)  : HomeRepository {
     override fun getMovies(searchText: String): Single<SearchResponse> {
-        TODO("Not yet implemented")
+        return remoteDataSource.getMovies(searchText)
     }
 
     override fun getAllSearchCase(): Single<List<SearchResponse>> {
-        TODO("Not yet implemented")
+        return localDataSource.getAllSearchCase()
     }
 
     override fun insertSearchCase(movieDetails: SearchResponse): Single<Long> {
-        TODO("Not yet implemented")
+        return localDataSource.insertSearchCase(movieDetails)
     }
 
     override fun getSearchCase(searchText: String): Single<SearchResponse> {
-        TODO("Not yet implemented")
+        return localDataSource.getSearchCase(searchText)
     }
 }

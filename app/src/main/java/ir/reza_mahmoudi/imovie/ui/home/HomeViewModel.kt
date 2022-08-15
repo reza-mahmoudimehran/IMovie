@@ -12,17 +12,12 @@ import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
 import ir.reza_mahmoudi.imovie.model.MovieItem
 import ir.reza_mahmoudi.imovie.model.SearchResponse
 import ir.reza_mahmoudi.imovie.data.remote.MovieApi
-import ir.reza_mahmoudi.imovie.di.DaggerApiComponent
+import ir.reza_mahmoudi.imovie.data.remote.RetrofitService
 import ir.reza_mahmoudi.imovie.utils.showLog
-import javax.inject.Inject
 
 class HomeViewModel (application: Application
 ) : AndroidViewModel(application) {
-    @Inject
-    lateinit var movieApi:MovieApi
-    init{
-        DaggerApiComponent.create().inject(this)
-    }
+    private val movieApi= RetrofitService.buildService(MovieApi::class.java)
     private val disposable = CompositeDisposable()
     private val movieDao = MoviesDatabase.getDatabase(application).getMoviesDao()
 

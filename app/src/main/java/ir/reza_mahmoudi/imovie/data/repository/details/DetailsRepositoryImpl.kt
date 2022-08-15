@@ -1,22 +1,28 @@
 package ir.reza_mahmoudi.imovie.data.repository.details
 
 import io.reactivex.Single
+import ir.reza_mahmoudi.imovie.data.local.MoviesDao
+import ir.reza_mahmoudi.imovie.data.remote.MovieApi
 import ir.reza_mahmoudi.imovie.model.MovieDetails
+import javax.inject.Inject
 
-class DetailsRepositoryImpl : DetailsRepository{
+class DetailsRepositoryImpl @Inject constructor(
+    private val localDataSource: MoviesDao,
+    private val remoteDataSource: MovieApi
+) : DetailsRepository{
     override fun getMovieDetails(imdbID: String): Single<MovieDetails> {
-        TODO("Not yet implemented")
+        return remoteDataSource.getMovieDetails(imdbID)
     }
 
     override fun getAllDetails(): Single<List<MovieDetails>> {
-        TODO("Not yet implemented")
+        return localDataSource.getAllDetails()
     }
 
     override fun insertDetails(movieDetails: MovieDetails): Single<Long> {
-        TODO("Not yet implemented")
+        return localDataSource.insertDetails(movieDetails)
     }
 
     override fun getDetails(detailsImdbID: String): Single<MovieDetails> {
-        TODO("Not yet implemented")
+        return localDataSource.getDetails(detailsImdbID)
     }
 }
