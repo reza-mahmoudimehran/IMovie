@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ir.reza_mahmoudi.imovie.data.model.MovieDetails
-import ir.reza_mahmoudi.imovie.data.model.MovieItem
-import ir.reza_mahmoudi.imovie.data.model.SearchResponse
+import ir.reza_mahmoudi.imovie.model.MovieDetails
+import ir.reza_mahmoudi.imovie.model.MovieItem
+import ir.reza_mahmoudi.imovie.model.SearchResponse
 @Database(
     entities = [MovieItem::class, MovieDetails::class,SearchResponse::class],
     version = 1 ,

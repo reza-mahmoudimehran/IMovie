@@ -3,7 +3,7 @@ package ir.reza_mahmoudi.imovie.data.local
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import ir.reza_mahmoudi.imovie.data.model.MovieItem
+import ir.reza_mahmoudi.imovie.model.MovieItem
 
 
 class Converters {

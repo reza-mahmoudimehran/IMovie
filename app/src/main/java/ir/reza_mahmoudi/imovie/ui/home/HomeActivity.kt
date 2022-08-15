@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import ir.reza_mahmoudi.imovie.data.model.MovieItem
+import ir.reza_mahmoudi.imovie.model.MovieItem
 import ir.reza_mahmoudi.imovie.databinding.ActivityHomeBinding
 import ir.reza_mahmoudi.imovie.ui.moviedetails.MovieDetailsActivity
 import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData
 import ir.reza_mahmoudi.imovie.utils.isConnected
+import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity @Inject constructor(private  val repo:HomeViewModel) : AppCompatActivity() {
     lateinit var viewModel: HomeViewModel
     private lateinit var binding: ActivityHomeBinding
     private lateinit var moviesAdapter:MoviesListAdapter

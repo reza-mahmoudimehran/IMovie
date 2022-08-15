@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import ir.reza_mahmoudi.imovie.data.model.MovieDetails
+import ir.reza_mahmoudi.imovie.model.MovieDetails
 import ir.reza_mahmoudi.imovie.databinding.ActivityMovieDetailsBinding
 import ir.reza_mahmoudi.imovie.databinding.IncludeMovieDetailsBinding
 import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData

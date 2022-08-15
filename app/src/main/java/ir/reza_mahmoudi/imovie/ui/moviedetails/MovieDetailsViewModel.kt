@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
-import ir.reza_mahmoudi.imovie.data.model.MovieDetails
+import ir.reza_mahmoudi.imovie.model.MovieDetails
 import ir.reza_mahmoudi.imovie.data.remote.MovieApi
 import ir.reza_mahmoudi.imovie.di.DaggerApiComponent
 import ir.reza_mahmoudi.imovie.utils.showLog

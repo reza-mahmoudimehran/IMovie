@@ -1,12 +1,9 @@
 package ir.reza_mahmoudi.imovie.data.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import io.reactivex.Maybe
 import io.reactivex.Single
-import ir.reza_mahmoudi.imovie.data.model.MovieDetails
-import ir.reza_mahmoudi.imovie.data.model.MovieItem
-import ir.reza_mahmoudi.imovie.data.model.SearchResponse
+import ir.reza_mahmoudi.imovie.model.MovieDetails
+import ir.reza_mahmoudi.imovie.model.SearchResponse
 
 @Dao
 interface MoviesDao {
