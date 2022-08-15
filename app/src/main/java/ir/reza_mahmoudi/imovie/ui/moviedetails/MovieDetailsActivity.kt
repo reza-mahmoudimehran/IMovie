@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import ir.reza_mahmoudi.imovie.model.MovieDetails
+import dagger.hilt.android.AndroidEntryPoint
+import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
 import ir.reza_mahmoudi.imovie.databinding.ActivityMovieDetailsBinding
 import ir.reza_mahmoudi.imovie.databinding.IncludeMovieDetailsBinding
 import ir.reza_mahmoudi.imovie.utils.ConnectionLiveData
@@ -12,6 +13,7 @@ import ir.reza_mahmoudi.imovie.utils.getProgressDrawable
 import ir.reza_mahmoudi.imovie.utils.isConnected
 import ir.reza_mahmoudi.imovie.utils.loadImage
 
+@AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity() {
     lateinit var viewModel: MovieDetailsViewModel
     private lateinit var binding: ActivityMovieDetailsBinding

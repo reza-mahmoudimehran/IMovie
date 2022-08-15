@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ir.reza_mahmoudi.imovie.model.MovieDetails
-import ir.reza_mahmoudi.imovie.model.MovieItem
-import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
+import ir.reza_mahmoudi.imovie.domain.model.MovieItem
+import ir.reza_mahmoudi.imovie.domain.model.SearchResponse
 import ir.reza_mahmoudi.imovie.utils.Constants.Companion.DATABASE_NAME
 
 @Database(

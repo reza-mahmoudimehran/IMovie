@@ -3,7 +3,7 @@ package ir.reza_mahmoudi.imovie.data.repository.home
 import io.reactivex.Single
 import ir.reza_mahmoudi.imovie.data.local.MoviesDao
 import ir.reza_mahmoudi.imovie.data.remote.MovieApi
-import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.domain.model.SearchResponse
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(

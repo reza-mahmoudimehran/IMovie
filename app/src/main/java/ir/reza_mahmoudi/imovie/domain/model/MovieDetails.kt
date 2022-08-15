@@ -1,4 +1,4 @@
-package ir.reza_mahmoudi.imovie.model
+package ir.reza_mahmoudi.imovie.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

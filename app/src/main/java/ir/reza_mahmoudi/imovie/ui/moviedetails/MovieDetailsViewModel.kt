@@ -1,23 +1,25 @@
 package ir.reza_mahmoudi.imovie.ui.moviedetails
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
-import ir.reza_mahmoudi.imovie.model.MovieDetails
+import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
 import ir.reza_mahmoudi.imovie.data.remote.MovieApi
 import ir.reza_mahmoudi.imovie.data.remote.RetrofitService
+import ir.reza_mahmoudi.imovie.data.repository.details.DetailsRepository
 import ir.reza_mahmoudi.imovie.utils.showLog
+import javax.inject.Inject
 
-class MovieDetailsViewModel(application: Application
-) : AndroidViewModel(application) {
-    private val movieApi= RetrofitService.buildService(MovieApi::class.java)
-    private val movieDao = MoviesDatabase.getDatabase(application).getMoviesDao()
+@HiltViewModel
+class MovieDetailsViewModel @Inject constructor(
+    private val detailsRepository: DetailsRepository
+) : ViewModel() {
     private val disposable = CompositeDisposable()
 
     val movieDetails = MutableLiveData<MovieDetails>()
@@ -36,7 +38,7 @@ class MovieDetailsViewModel(application: Application
     private fun details(imdbID:String){
         loading.value = true
         disposable.add(
-            movieApi.getMovieDetails(imdbID)
+            detailsRepository.getMovieDetails(imdbID)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MovieDetails>(), Disposable {
@@ -55,7 +57,7 @@ class MovieDetailsViewModel(application: Application
     }
     private fun getLocalDetails(imdbID:String){
         disposable.add(
-            movieDao.getDetails(imdbID)
+            detailsRepository.getDetails(imdbID)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MovieDetails>(), Disposable {
@@ -73,7 +75,7 @@ class MovieDetailsViewModel(application: Application
     }
     private fun insertDetails(movieDetails: MovieDetails){
         disposable.add(
-            movieDao.insertDetails(movieDetails).subscribeOn(Schedulers.newThread())
+            detailsRepository.insertDetails(movieDetails).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<Long>(), Disposable {
                     override fun onSuccess(id: Long) {

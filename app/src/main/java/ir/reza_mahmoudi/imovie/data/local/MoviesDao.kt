@@ -2,8 +2,8 @@ package ir.reza_mahmoudi.imovie.data.local
 
 import androidx.room.*
 import io.reactivex.Single
-import ir.reza_mahmoudi.imovie.model.MovieDetails
-import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
+import ir.reza_mahmoudi.imovie.domain.model.SearchResponse
 
 @Dao
 interface MoviesDao {

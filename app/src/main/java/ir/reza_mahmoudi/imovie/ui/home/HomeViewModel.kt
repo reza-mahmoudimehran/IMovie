@@ -3,23 +3,27 @@ package ir.reza_mahmoudi.imovie.ui.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
-import ir.reza_mahmoudi.imovie.model.MovieItem
-import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.domain.model.MovieItem
+import ir.reza_mahmoudi.imovie.domain.model.SearchResponse
 import ir.reza_mahmoudi.imovie.data.remote.MovieApi
 import ir.reza_mahmoudi.imovie.data.remote.RetrofitService
+import ir.reza_mahmoudi.imovie.data.repository.home.HomeRepository
 import ir.reza_mahmoudi.imovie.utils.showLog
+import javax.inject.Inject
 
-class HomeViewModel (application: Application
-) : AndroidViewModel(application) {
-    private val movieApi= RetrofitService.buildService(MovieApi::class.java)
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val homeRepository: HomeRepository
+) : ViewModel() {
     private val disposable = CompositeDisposable()
-    private val movieDao = MoviesDatabase.getDatabase(application).getMoviesDao()
 
     val movies = MutableLiveData<List<MovieItem>>()
     val moviesLoadError = MutableLiveData<Boolean>()
@@ -39,7 +43,7 @@ class HomeViewModel (application: Application
     private fun search(searchText:String){
         loading.value = true
         disposable.add(
-            movieApi.getMovies(searchText)
+            homeRepository.getMovies(searchText)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<SearchResponse>(), Disposable {
@@ -59,7 +63,7 @@ class HomeViewModel (application: Application
     }
     private fun getLocalList(searchText:String){
         disposable.add(
-            movieDao.getSearchCase(searchText)
+            homeRepository.getSearchCase(searchText)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<SearchResponse>(), Disposable {
@@ -79,7 +83,7 @@ class HomeViewModel (application: Application
 
     private fun insertSearchCase(searchCase: SearchResponse){
         disposable.add(
-            movieDao.insertSearchCase(searchCase).subscribeOn(Schedulers.newThread())
+            homeRepository.insertSearchCase(searchCase).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<Long>(), Disposable {
                     override fun onSuccess(id: Long) {

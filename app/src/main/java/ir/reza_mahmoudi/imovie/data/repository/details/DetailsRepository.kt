@@ -1,11 +1,7 @@
 package ir.reza_mahmoudi.imovie.data.repository.details
 
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import io.reactivex.Single
-import ir.reza_mahmoudi.imovie.model.MovieDetails
-import ir.reza_mahmoudi.imovie.model.SearchResponse
+import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
 
 interface DetailsRepository {
     // Remote

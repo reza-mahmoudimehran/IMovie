@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ir.reza_mahmoudi.imovie.model.MovieItem
+import ir.reza_mahmoudi.imovie.domain.model.MovieItem
 import ir.reza_mahmoudi.imovie.databinding.ItemMovieBinding
 import ir.reza_mahmoudi.imovie.utils.getProgressDrawable
 import ir.reza_mahmoudi.imovie.utils.loadImage
