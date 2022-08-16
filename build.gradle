@@ -14,6 +14,10 @@ plugins {
 
 ext {
     hilt_version = "2.43"
+    roomVersion = "2.4.2"
+    rxJavaVersion = '2.0.1'
+    retrofitVersion = '2.9.0'
+    lottieVersion = '3.4.0'
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/drawable/back_movie_items.xml" value="0.1945" />
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/layout/activity_home.xml" value="0.2033514492753623" />
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/layout/activity_movie_details.xml" value="0.20104166666666667" />
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/layout/activity_splash_screen.xml" value="0.2033514492753623" />
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/layout/include_movie_details.xml" value="0.1" />
+        <entry key="..\:/programing/projects/Android/Interview Tasks/Imovie/app/src/main/res/layout/item_movie.xml" value="0.2033514492753623" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

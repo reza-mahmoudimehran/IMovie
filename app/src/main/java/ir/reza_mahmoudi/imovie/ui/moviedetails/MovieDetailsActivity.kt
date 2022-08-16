@@ -51,7 +51,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel.movieDetails.observe(this) { movieDetails: MovieDetails? ->
             movieDetails?.let {
                 detailsBinding.details.visibility = View.VISIBLE
-                updateDetails(it)
+                detailsBinding.movieDetails=it
             }
         }
         viewModel.moviesLoadError.observe(this) { isError: Boolean? ->
@@ -69,16 +69,5 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-    private fun updateDetails(movie:MovieDetails){
-        detailsBinding.year.text=movie.year
-        detailsBinding.director.text=movie.director
-        detailsBinding.title.text=movie.title
-        detailsBinding.genre.text=movie.genre
-        detailsBinding.time.text=movie.time
-        detailsBinding.imdbRating.text=movie.imdbRating
-        detailsBinding.metaRating.text=movie.metaScore
-        detailsBinding.summary.text=movie.summary
-        detailsBinding.poster.loadImage(movie.poster,getProgressDrawable(binding.root.context))
     }
 }

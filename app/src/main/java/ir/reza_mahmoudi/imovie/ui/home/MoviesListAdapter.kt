@@ -26,7 +26,7 @@ class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(movies[position])
-        holder.movieItemMainLayout.setOnClickListener {
+        holder.itemView.setOnClickListener {
             onMovieClicked(movies[position].imdbID)
         }
     }
@@ -34,13 +34,8 @@ class MoviesListAdapter (private var movies: ArrayList<MovieItem>,
     override fun getItemCount(): Int =movies.size
 
     class ViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root){
-        private val progressDrawable= getProgressDrawable(binding.root.context)
-        val movieItemMainLayout =binding.movieItemMainLayout
         fun bind(movie: MovieItem){
-            binding.title.text=movie.title
-            binding.type.text=movie.type
-            binding.year.text=movie.year
-            binding.coverImage.loadImage(movie.poster,progressDrawable)
+            binding.movie=movie
         }
     }
 }

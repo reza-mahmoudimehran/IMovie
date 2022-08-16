@@ -1,7 +1,5 @@
 package ir.reza_mahmoudi.imovie.ui.home
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,11 +8,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
 import ir.reza_mahmoudi.imovie.domain.model.MovieItem
 import ir.reza_mahmoudi.imovie.domain.model.SearchResponse
-import ir.reza_mahmoudi.imovie.data.remote.MovieApi
-import ir.reza_mahmoudi.imovie.data.remote.RetrofitService
 import ir.reza_mahmoudi.imovie.data.repository.home.HomeRepository
 import ir.reza_mahmoudi.imovie.utils.showLog
 import javax.inject.Inject

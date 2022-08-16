@@ -17,13 +17,13 @@ fun getProgressDrawable(context: Context): CircularProgressDrawable {
     }
 }
 
-fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable) {
+fun ImageView.loadImage(url: String?, progressDrawable: CircularProgressDrawable) {
     val options = RequestOptions()
         .placeholder(progressDrawable)
         .error(R.drawable.ic_damaged_image)
     Glide.with(this.context)
         .setDefaultRequestOptions(options)
-        .load(uri)
+        .load(url)
         .into(this)
 }
 

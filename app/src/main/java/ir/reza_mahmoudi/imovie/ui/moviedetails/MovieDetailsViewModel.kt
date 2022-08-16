@@ -8,10 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import ir.reza_mahmoudi.imovie.data.local.MoviesDatabase
 import ir.reza_mahmoudi.imovie.domain.model.MovieDetails
-import ir.reza_mahmoudi.imovie.data.remote.MovieApi
-import ir.reza_mahmoudi.imovie.data.remote.RetrofitService
 import ir.reza_mahmoudi.imovie.data.repository.details.DetailsRepository
 import ir.reza_mahmoudi.imovie.utils.showLog
 import javax.inject.Inject
@@ -43,7 +40,6 @@ class MovieDetailsViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MovieDetails>(), Disposable {
                     override fun onSuccess(details: MovieDetails) {
-                        showLog("searchMovies: ", details.imdbID)
                         movieDetails.value = details
                         insertDetails(details)
                         setCompleteSuccessfully()
@@ -62,7 +58,6 @@ class MovieDetailsViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MovieDetails>(), Disposable {
                     override fun onSuccess(details: MovieDetails) {
-                        showLog("getLocalDetails: ",details.imdbID)
                         movieDetails.value =details
                         setCompleteSuccessfully()
                     }
